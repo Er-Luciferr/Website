@@ -1,29 +1,39 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 
-## Title of the aplication
-st.title("Hello Ketan")
+st.title("Car Watch")
+st.header("Welcome to HomePage")
+st.subheader("This is a website to showcase different CARS")
+st.write("\n")
+st.write("\n")
+st.write("\n")
+st.write("\n")
+st.write("\n")
 
-## Diplay a Simple Text
-st.write("This is a simple text")
+#with st.container():
+#    st.subheader("Kia")
+#    st.image("artifacts\images\Kia.webp")
+#    st.subheader("Koniegsegg")
+#    st.image("artifacts\images\koniegsegg.webp")
+#    st.subheader("Lamborgini")
+#    st.image("artifacts\images\lambor.webp")
 
-##create a simple Dataframe
+col1, col2, col3 = st.columns([2, 2, 2],gap="medium",vertical_alignment='center',border=True)
+col1.subheader("Kia")
+col1.image("artifacts\images\Kia.webp")
+col2.subheader("Koniegsegg")
+col2.image("artifacts\images\koniegsegg.webp")
+col3.subheader("Lamborgini")
+col3.image("artifacts\images\lambor.webp")  
+st.selectbox("Pick one", ["None","Kia", "Koniegsegg","Lamborgini"],placeholder="None")
 
-df = pd.DataFrame({
-    'first column': [1, 2, 3, 4,1, 2, 3, 4],
-    'second column': [10, 20, 30, 40,10, 20, 30, 40]
-})
+price = st.slider("Enter Your Budget", min_value=100000, max_value=10000000,step=1000000,value=500000)
+st.write(f"Your Selected Budget is :- {price}")
+st.text_input("Enter Your name")
+st.text_input("Enter your COntact no")
+st.text_input("Enter your Email Id")
+st.text_area("Enter your full address",placeholder="Mumbai")
+if st.button("Submit"):
+    st.switch_page('pages/form_feedback.py')
 
-
-## Display the Dataframe
-st.write("Here is the dataframe")
-st.write(df)
-
-
-##create a line chart
-
-chart_data=pd.DataFrame(
-    np.random.randn(20,3),columns=['a','b','c']
-)
-st.line_chart(chart_data)
+ 
